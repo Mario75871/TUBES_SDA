@@ -68,3 +68,19 @@ int isValidInput(char input) {
     return (input == 'A' || input == 'D' || input == 'S' || 
             input == 'W' || input == 'U' || input == 'Q');
 }
+
+void hideCursor() {
+    HANDLE consoleHandle = GetStdHandle(STD_OUTPUT_HANDLE);
+    CONSOLE_CURSOR_INFO info;
+    info.dwSize = 100;
+    info.bVisible = FALSE;
+    SetConsoleCursorInfo(consoleHandle, &info);
+}
+
+void showCursor() {
+    HANDLE consoleHandle = GetStdHandle(STD_OUTPUT_HANDLE);
+    CONSOLE_CURSOR_INFO info;
+    info.dwSize = 100;
+    info.bVisible = TRUE;
+    SetConsoleCursorInfo(consoleHandle, &info);
+}
