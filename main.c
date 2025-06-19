@@ -68,6 +68,7 @@ void startGame() {
                     rotateTetromino(currentTetromino);
                     break;
                 case 'P':
+                    cleanScreen();
     				printCentered("\nGame dijeda. Tekan [P] lagi untuk melanjutkan...\n", 80);
     				while(1) {
         				if(_kbhit()) {
