@@ -9,5 +9,7 @@ void printBorder();
 void delay(int milliseconds);
 char getKeyPress();
 int isValidInput(char input);
+void hideCursor();
+void showCursor();
 
 #endif
