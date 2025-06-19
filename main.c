@@ -67,6 +67,16 @@ void startGame() {
                 case 'W':
                     rotateTetromino(currentTetromino);
                     break;
+                case 'P':
+    				printCentered("\nGame dijeda. Tekan [P] lagi untuk melanjutkan...\n", 80);
+    				while(1) {
+        				if(_kbhit()) {
+            				char pauseKey = toupper(_getch());
+            				if(pauseKey == 'P') break;
+        				}
+        				Sleep(100);
+    				}
+    				break;
                 case 'Q':
                     gameOver = 1;
                     continue;
