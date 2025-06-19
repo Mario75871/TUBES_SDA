@@ -1,15 +1,9 @@
 #include <stdio.h>
-#include <stdlib.h>
+#include <string.h>
 #include <conio.h>
 #include <windows.h>
 #include <ctype.h>
 #include "utils.h"
-#include "grid.h"
-#include "tetromino.h"
-#include "queue.h"
-#include "stack.h"
-#include "score_history.h"
-#include "bst_score.h"
 
 void printCentered(const char* text, int totalWidth) {
     int len = strlen(text);
