@@ -16,7 +16,7 @@ extern Queue* tetrominoQueue;
 void initQueue();
 void enqueue(int type);
 int dequeue();
-int peekQueue();
+int peekQueue(int position);
 void freeQueue();
 int isQueueEmpty();
 

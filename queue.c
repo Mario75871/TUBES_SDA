@@ -41,11 +41,21 @@ int dequeue() {
     return type;
 }
 
-int peekQueue() {
+int peekQueue(int position) {
     if(tetrominoQueue->front == NULL) {
         return -1;
     }
-    return tetrominoQueue->front->tetrominoType;
+    
+    QNode* current = tetrominoQueue->front;
+    int i;
+    for(i = 0; i < position && current != NULL; i++) {
+        current = current->next;
+    }
+    
+    if(current == NULL) {
+        return -1;
+    }
+    return current->tetrominoType;
 }
 
 void freeQueue() {

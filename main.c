@@ -28,7 +28,7 @@ void startGame() {
     int gameOver = 0;
     int i;
 
-    for(i = 0; i < 5; i++) {
+    for(i = 0; i < 7; i++) {
         enqueue(rand() % 7);
     }
 
@@ -48,9 +48,16 @@ void startGame() {
         printCentered("\n\n", 80);
 
         char info[100];
-        snprintf(info, sizeof(info), "Score: %-8d Level: %-3d Lines: %-4d Next: %c",
-                 score, level, linesCleared, "IOSZTJL"[peekQueue()]);
+        snprintf(info, sizeof(info), "Score: %-8d Level: %-3d Lines: %-4d", score, level, linesCleared);
         printCentered(info, 80);
+        printCentered("\n", 80);
+
+        char preview[100];
+        snprintf(preview, sizeof(preview), "Next pieces: %c %c %c", 
+                 "IOSZTJL"[peekQueue(0)],
+                 "IOSZTJL"[peekQueue(1)],
+                 "IOSZTJL"[peekQueue(2)]);
+        printCentered(preview, 80);
         printCentered("\n", 80);
 
         printGrid(currentTetromino);
