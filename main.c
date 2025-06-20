@@ -8,9 +8,9 @@
 #include "grid.h"
 #include "tetromino.h"
 #include "queue.h"
-#include "score_history.h"
+#include "score_history.h"	
 #include "bst_score.h"
-#include "menu_tree.h"
+#include "menu.h"
 #include "utils.h"
 
 void startGame();
@@ -40,7 +40,6 @@ void startGame() {
     const int INPUT_DELAY = 50;
 
     while(!gameOver) {
-        pushState();
 
         gotoxy(0, 0);
         printCentered("=== TETRIS GAME ===", 80);
@@ -61,14 +60,15 @@ void startGame() {
             input = toupper(input);
 
             switch(input) {
-                case 'A': if(canMove(currentTetromino, -1, 0)) { moveTetromino(currentTetromino, -1, 0); } break;
+                case 'A': 
+					if(canMove(currentTetromino, -1, 0)) { moveTetromino(currentTetromino, -1, 0); } 
+					break;
                 case 'D': if(canMove(currentTetromino, 1, 0)) { moveTetromino(currentTetromino, 1, 0); } break;
                 case 'S': if(canMove(currentTetromino, 0, 1)) { moveTetromino(currentTetromino, 0, 1); score += 1; } break;
-                case 'W':
-                    rotateTetromino(currentTetromino);
+                case 'W': rotateTetromino(currentTetromino);
                     break;
                 case 'P':
-                    cleanScreen();
+    				clearScreen();
     				printCentered("\nGame dijeda. Tekan [P] lagi untuk melanjutkan...\n", 80);
     				while(1) {
         				if(_kbhit()) {
@@ -147,13 +147,12 @@ int main() {
 
     initGrid();
     initQueue();
-    initStack();
     initHistory();
     loadLeaderboard("leaderboard.txt");
 
 
     while(gameRunning) {
-        showCursor();  // Pastikan kursor terlihat di menu
+        showCursor();
         displayMainMenu();
 
         printCentered("Select option (1-5): ", 80);
@@ -180,7 +179,6 @@ int main() {
     saveLeaderboard("leaderboard.txt");
 
     freeHistory();
-    freeStack();
     freeQueue();
     freeTree(scoreRoot);
 
